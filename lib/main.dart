@@ -25,9 +25,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
+  String inputStr = '';
+  final TextCtrl = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: new AppBar(
+        title: Text("Input Widgets"),
+      ),
+      body: new  Container(
+        padding: EdgeInsets.all(20.0),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new TextField(
+              decoration: InputDecoration(hintText: "asdfasfasd fa",hasFloatingPlaceholder: true),
+              onChanged: (String textInput){
+                setState(() {
+                  inputStr = textInput;
+                  inputStr =TextCtrl.text.length.toString();
+                });
+              },
+              controller: TextCtrl,
+            ),
+            new Text(inputStr),
+          ],
+        ),
+      ),
+    );
   }
 }
